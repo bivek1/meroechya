@@ -1,0 +1,87 @@
+{% extends "base.html" %}
+{% block title %}
+  Admin Dashboard
+{% endblock title %}
+
+{% block content %}
+
+    <div class="container-fluid">
+        <div class="text-center">
+            <h5>
+                Add Vendor for your online application
+            </h5>
+            <small>
+                You can add and manage vendor profile and reports 
+            </small>
+        </div>
+        <form action="" method="post">
+            <div class="row">
+                <div class="col-8 m-auto">
+                    <div class="form-row p-2" style="background-color: white;">
+                        <div class="form-group col-md-6">
+                            {{form.fullname.label_tag}}
+                            {{form.fullname}}
+                            {{form.fullname.errors}}
+                        </div>
+                        <div class="form-group col-md-6">
+                            {{form.email.label_tag}}
+                            {{form.email}}
+                            {{form.email.errors}}
+                        </div>
+                        <div class="form-group col-md-6">
+                            {{form.password.label_tag}}
+                            {{form.password}}
+                            {{form.password.errors}}
+                        </div>
+                        <div class="form-group col-md-6">
+                            {{form.re_password.label_tag}}
+                            {{form.re_password}}
+                            {{form.re_password.errors}}
+                        </div>
+                        <div class="form-group col-md-6">
+                            {{form.country.label_tag}}
+                            {{form.country}}
+                            {{form.country.errors}}
+                        </div>
+                        <div class="form-group col-md-3">
+                            {{form.district.label_tag}}
+                            {{form.district}}
+                            {{form.district.errors}}
+                        </div>
+                        <div class="form-group col-md-3">
+                            {{form.province.label_tag}}
+                            {{form.province}}
+                            {{form.province.errors}}
+                        </div>
+                        <div class="form-group col-md-3">
+                            {{form.ward_no.label_tag}}
+                            {{form.ward_no}}
+                            {{form.ward_no.errors}}
+                        </div>
+                        <div class="form-group col-md-3">
+                            {{form.street.label_tag}}
+                            {{form.street}}
+                            {{form.street.errors}}
+                        </div>
+                       
+                        <div class="form-group col-md-6">
+                            {{form.companyname.label_tag}}
+                            {{form.companyname}}
+                            {{form.companyname.errors}}
+                        </div>
+
+                        {% csrf_token %}
+                        <button class="btn btn-primary col-6 m-auto" type="submit">
+                            Add Vendor
+                        </button>
+                    </div>
+
+                </div>
+            </div>
+            
+
+        </form>
+        
+    </div>
+
+{%endblock content%}

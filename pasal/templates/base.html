@@ -35,7 +35,7 @@
                             Became An Affiliate</a>
                         </li>
                         <li class="nav-item">
-                          <a class="nav-link" href="#">
+                          <a class="nav-link" href="#" data-toggle="modal" data-target="#exampleModal1">
                             <i class="fa fa-shopping-bag"></i>   
                             Start Selling</a>
                         </li>
@@ -46,8 +46,16 @@
                         </li>
                         <li class="nav-item">
                              
-                            <a class="nav-link" href="#">
-                                <i class="fa fa-user-circle"></i> Sign In</a>
+                             {% if user.is_authenticated %}
+                             <a class="nav-link" href="{%url 'shop:logout'%}">
+                                <i class="fa fa-user-circle"></i> Logout
+                             </a>
+                             {%else%}
+                             <a class="nav-link" data-toggle="modal" data-target="#exampleModal" href="#">
+                                <i class="fa fa-user-circle"></i> Sign In
+                             </a>
+                             {% endif %}
+
                           </li>
                       </ul>
                 </div>
@@ -55,6 +63,8 @@
             <br>
             <br>
             <br>
+
+
             <div class="col-md-3 col-12 p-2 text-center">
                <img src="{%static 'res/logo.PNG'%}" alt="" srcset="">
             </div>
@@ -99,9 +109,133 @@
         </div>
         
     </div>
+
+
+    <!-- Model for wholeseller or vendor -->
+
+
+    <!-- Button trigger modal -->
+  
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModal1" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Start Selling As?</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="row text-center">
+            <div class="col-md-6 col-12 p-1">
+                <a href="{%url 'shop:enrollvendor'%}">
+                    <div class="btn w-100 btn-lg btn-success">
+                        <i class="fa fa-industry">
+                        </i>
+                        vendor
+                    </div>
+                </a>   
+            </div>
+            <div class="col-md-6 col-12 p-1">
+                <a href="{%url 'shop:enrollseller'%}">
+                    <div class="btn btn-lg w-100 btn-warning">
+                        <i class="fa fa-users">
+            
+                        </i>
+                        Wholeseller
+                    </div>
+
+                </a>
+                
+           
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+    <!-- Finish model -->
+
+
+      <!--Modal: Login / Register Form-->
+        <!-- Modal -->
+        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                <h6 class="modal-title p-2" id="exampleModalLabel" style="color:white; background-color: #2874f0; border-radius: 20px;">
+                    <i class="fa fa-user-circle"></i>
+                    Login| MeroEkchaa</h6>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                </div>
+                <div class="modal-body">
+                    <div class="text-center">
+                        <small black-50>
+                            Please Enter your email and password.
+                        </small>
+                    </div>
+                <form action="dologin" method="post" role="form">
+                    <div class="row p-2">
+                        <div class="col-1">
+                            <i class="fa fa-envelope" style="font-size: 30px; color: red; position: absolute;"  >
+
+                            </i>
+                        </div>
+                        <div class="col-11">
+                            <input class = "form-control" type="text" name = "email" placeholder="meroekchaa@gmail.com" style="border-radius: 20px;">
+                        </div>
+                       
+                    </div>
+                   
+                   <div class="row p-2">
+                    <div class="col-1">
+                        <i class="fa fa-lock" style="font-size: 35px; color: red; position: absolute; ">
+
+                        </i>
+                    </div>
+                    <div class="col-11">
+                        <input class = "form-control" type="password" name = "password" placeholder="******" style="border-radius: 20px;">
+                    </div>
+                 
+                   </div>
+                  {% csrf_token %}
+                   <div class="col-8 m-auto">
+                        <button class="btn btn-block btn-primary" type="submit">
+                            Login
+                        </button>
+                   </div>
+                </form>
+                <div class="social-auth-links text-center mb-3">
+                <p>- OR -</p>
+                <hr>
+                <a href="#" class="btn btn-block btn-primary">
+                    <i class="fa fa-facebook mr-2"></i> Sign in using Facebook
+                </a>
+                <a href="#" class="btn btn-block btn-danger">
+                    <i class="fa fa-google mr-2"></i> Sign in using Google
+                </a>
+                </div>
+                </div>
+                <div class="modal-footer">
+                   
+                    <div class="switch-login">
+                        <a href="./register.html" class="or-login">Or Create An Account</a>
+                    </div>
+               
+                <button type="button" class="btn btn-danger btn-sm" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+            </div>
+        </div>
+        
+    <!--Modal: Login / Register Form-->
     {% block content %}
-      
-    {% endblock content %}
     <p>
         The features like adding seller, delivery boy, vendor, logging as seller, vendor, delivery boy and owner 
         will be Available on 6 November 2020. STAY TUNE
@@ -115,6 +249,9 @@
         <li> > Category, sub Category and product adding</a></li>
         <li> > Add to cart, review order and checking out for handcash method</a></li>
     </ul>
+
+    {% endblock content %}
+    
 <br><br><br><br><br>
     <!-- Footer -->
     <footer class="section-footer">
@@ -133,7 +270,6 @@
                                 <strong>REGISTRATION NO: </strong> 6374-074-75 <br> 
 
                             </p>
-    
                         </article>
                     </aside>
                     <aside class="col-sm-3 col-md-3 white pt-5">

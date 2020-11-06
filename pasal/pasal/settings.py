@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'shop.apps.ShopConfig',
+    'owner.apps.OwnerConfig',
 ]
 
 MIDDLEWARE = [
@@ -82,7 +83,6 @@ DATABASES = {
     }
 }
 
-
 # Password validation
 # https://docs.djangoproject.com/en/3.1/ref/settings/#auth-password-validators
 
@@ -124,6 +124,10 @@ STATIC_URL = '/static/'
 #     os.path.join(BASE_DIR, 'static'),
 # )
 
+AUTH_USER_MODEL = 'shop.CustomUser'
+
+
+AUTHENTICATION_BACKENDS = ['shop.EmailBackend.EmailBackEnd']
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
