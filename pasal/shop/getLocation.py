@@ -1,7 +1,8 @@
-import urllib.request
-import json
+import geocoder
+from geopy.geocoders import Nominatim
+geolocator = Nominatim(user_agent="user",timeout=10)
 
-with urllib.request.urlopen("https://geolocation-db.com/json") as url:
-    data = json.loads(url.read().decode())
-    print(data)
 
+def send_loc(request):
+    g = geocoder.ip('me')
+    return g

@@ -30,7 +30,7 @@
                 <div class="float-right">
                     <ul class="nav p-2">
                         <li class="nav-item">
-                          <a class="nav-link" href="#">
+                          <a class="nav-link" href="{%url 'shop:enrollaffiliate'%}">
                             <i class="fa fa-users"></i>  
                             Became An Affiliate</a>
                         </li>
@@ -69,7 +69,7 @@
                <img src="{%static 'res/logo.PNG'%}" alt="" srcset="">
             </div>
             <div class="col-md-7 col-12 p-2 text-center">
-                <div style="display: flex">
+                <!-- <div style="display: flex">
 
                     <div class="search-deliver" style="display: flex;">
                         <div class = "pt-1 pl-2" style="width: 20%; color:#2874f0; font-size: 22px;">
@@ -95,13 +95,21 @@
                              
                         </i>
                     </div>
+                </div> -->
+                <div class="col-12 wrap p-2 mb-2 ">
+                    <div class="search">
+                       <input type="text" class="searchTerm" placeholder="What are you looking for?">
+                       <button type="submit" class="searchButton">
+                         <i class="fa fa-search"></i>
+                      </button>
+                    </div>
                 </div>
- 
             </div>
-            <div class="col-md-2 col-12 p-2">
-                <div class="text-center" style="font-weight:bold; font-family:Arial; font-size:20px; color:white;">
-                    <i class="fa fa-cart-plus"></i> Cart
-                    <span class="badge badge-pill badge-warning">0</span>
+            <div class="col-md-2 col-12 p-2 mt-2">
+                <div class="text-center" style="font-weight:bold; font-family:Arial; font-size:25px; margin-top: 3px; color:white; ">
+                    <i class="fa fa-cart-plus" style="position: relative;
+                    display: inline-block;"></i>
+                    <span class="badge badge-pill badge-warning" style=" font-size:12px; position: absolute; margin-left: -6px;">0</span>
                 </div>
             </div>
             <br><br>
@@ -181,29 +189,20 @@
                         </small>
                     </div>
                 <form action="dologin" method="post" role="form">
-                    <div class="row p-2">
-                        <div class="col-1">
-                            <i class="fa fa-envelope" style="font-size: 30px; color: red; position: absolute;"  >
-
-                            </i>
+                    <div class="row">
+                        <div class="input-container p-2 col-12 col-md-12" style="display: inline-flex;">
+                            <i class="fa fa-envelope icon"></i>
+                            <input class="input-field" type="text" placeholder="Email" name="email">
+                          </div>
+                          
+                          <div class="input-container p-2 col-12 col-md-12" style="display: inline-flex;">
+                            <i class="fa fa-key icon"></i>
+                            <input class="input-field" type="password" placeholder="Password" name="password">
+                          </div>
                         </div>
-                        <div class="col-11">
-                            <input class = "form-control" type="text" name = "email" placeholder="meroekchaa@gmail.com" style="border-radius: 20px;">
-                        </div>
-                       
                     </div>
-                   
-                   <div class="row p-2">
-                    <div class="col-1">
-                        <i class="fa fa-lock" style="font-size: 35px; color: red; position: absolute; ">
+                    
 
-                        </i>
-                    </div>
-                    <div class="col-11">
-                        <input class = "form-control" type="password" name = "password" placeholder="******" style="border-radius: 20px;">
-                    </div>
-                 
-                   </div>
                   {% csrf_token %}
                    <div class="col-8 m-auto">
                         <button class="btn btn-block btn-primary" type="submit">
@@ -214,22 +213,31 @@
                 <div class="social-auth-links text-center mb-3">
                 <p>- OR -</p>
                 <hr>
-                <a href="#" class="btn btn-block btn-primary">
-                    <i class="fa fa-facebook mr-2"></i> Sign in using Facebook
-                </a>
-                <a href="#" class="btn btn-block btn-danger">
-                    <i class="fa fa-google mr-2"></i> Sign in using Google
-                </a>
+                <div class="row p-2">
+                    <a href="#" class="btn btn-block btn-primary col-8 m-auto">
+                        <i class="fa fa-facebook mr-2"></i> Sign in using Facebook
+                    </a>
+                    
+                    <a href="#" class="btn btn-block btn-danger col-8 m-auto">
+                        <i class="fa fa-google mr-2"></i> Sign in using Google
+                    </a> 
                 </div>
+                          
                 </div>
-                <div class="modal-footer">
-                   
-                    <div class="switch-login">
-                        <a href="./register.html" class="or-login">Or Create An Account</a>
+                <div class="row">
+                    <div class="col-12 col-md-12">
+                        <div class="float-right">
+                            
+                                <a href="{%url 'shop:register'%}" class="btn btn-secondary"> <i class="fa fa-user-circle"></i> Or Create An Account</a>
+                
+                            <button type="button" class="btn btn-danger btn-sm p-2 m-2" data-dismiss="modal">Close</button>
+                            </div>
+                        </div>
                     </div>
-               
-                <button type="button" class="btn btn-danger btn-sm" data-dismiss="modal">Close</button>
+                    
                 </div>
+                
+               
             </div>
             </div>
         </div>
@@ -237,21 +245,9 @@
     <!--Modal: Login / Register Form-->
     {% block content %}
 
-    <h5 class="title text-center">New Update</h5>
-    <ul  class="text-center">
-        <li> > Login- For Admin
-            
-            <pre>
-                email- test@test.com
-                password - test@123
-            </pre>
-        </a></li>
-        <li> > User can enroll as wholeseller and vendor. click on start selling </a></li>
-        <li> > Registered user like vendor and wholeseller can login </a></li>
-        <li> > Admin Dashboard Available.  </a></li>
-        <li> > Admin can add vendor and manage vendor. See vendor profile click on manage vendor after admin login</a></li>
-
-    </ul>
+    <H1 class="text-center">
+        MeroEkchaa.com
+    </H1>
 
     {% endblock content %}
     
@@ -337,7 +333,9 @@
      <script src="{%static 'js/jquery.dd.min.js' %} "></script>
      <script src="{%static 'js/jquery.slicknav.js' %} "></script>
      <script src="{%static 'js/owl.carousel.min.js' %} "></script>
-     <script src="{%static 'js/main.js' %} "></script>
+     <script src="{%static 'js/bootstrap.bundle.js' %} "></script>
+     <script src="{%static 'js/bootstrap.bundle.js.map.js' %} "></script>
+     <script src="{%static 'js/bootstrap.bundle.js.min.js' %} "></script>
      <!-- CSS only -->
 
 <!-- JS, Popper.js, and jQuery -->

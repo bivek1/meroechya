@@ -43,7 +43,17 @@
                 </div>
             </div>
             <div class="col-md-2">
-                <input type="submit" class="profile-edit-btn" name="btnAddMore" value="Edit Profile"/>
+                
+                {% if one.verified %}
+                <input class="profile-edit-btn btn-primary" name="btnAddMore" value="Verified" style="color: white;"/>
+                {%else%}
+                <a href="{%url 'owner:verify' one.id%}">
+                    <input class="profile-edit-btn btn-danger" name="btnAddMore" value="Verify?" style="color: white;"/>
+                </a>
+                
+                {% endif %}
+                    
+               
             </div>
         </div>
         <div class="row">
@@ -55,6 +65,14 @@
             </div>
             <div class="col-md-8">
                 
+                {% if messages %}
+                    {%for m in messages%}
+                    <div class="alert alert-success">
+                        {{m}}
+                    </div>
+                    {%endfor%}
+                {% endif %}
+                    
                 {% if one.verified %}
                     {%else%}
                     <div class="alert alert-danger">
@@ -113,11 +131,27 @@
                                     <div class="col-md-6">
                                         <p>{{one.vat}}</p>
                                     </div>
+                                    {% if one.KYC %}
+                                    <div class="col-md-6">
+                                        <label>KYC</label>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <img src="{{one.KYC.url}}" alt="Kyc" srcset="" style="height: 200px; width: 200px;">
+                                    </div>
+                                    {% endif %}
+                                    {% if one.taxpic %}
+                                    <div class="col-md-6 mt-2">
+                                        <label>Tax clear</label>
+                                    </div>
+                                    <div class="col-md-6 mt-2">
+                                        <img src="{{one.taxpic.url}}" alt="Kyc" srcset="" style="height: 200px; width: 200px;">
+                                    </div>
+                                    {% endif %}
                                 </div>
                     </div>
                 </div>
             </div>
         </div>
-    </form>           
+    </form>      
 </div>
 {% endblock content %}

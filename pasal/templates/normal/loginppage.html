@@ -1,0 +1,83 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Login
+{% endblock title %}
+
+{% block content %}
+<div class="container-fluid">
+    <br>
+        <div class="row">    
+            
+            <div class="col-12 col-md-4 p-3 m-auto" style="background-color: white;">
+                <div class="col-12 col-md-12 m-auto">
+                    {% if messages %}
+                    {% for m in messages  %}
+                    
+                    {% if m.tags == 'error' %}
+                    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                        {{m}}
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                          <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    {% endif %}
+                    {% if m.tags == 'success' %}
+                    <div class="alert alert-success alert-dismissible fade show" role="alert">
+                        {{m}}
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                          <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    {% endif %}
+                        
+                    
+                    {% endfor %}
+                {% endif %}
+                </div>
+                <div class="text-center">
+                    <h5>
+                       Login | Meroekchha.com
+                    </h5>
+            
+                </div>
+                <form action="dologin" method="post" role="form">
+                    <div class="row p-2">
+                        <div class="input-container col-12" style="display: inline-flex;">
+                            <i class="fa fa-envelope icon"></i>
+                            <input class="input-field" type="text" placeholder="Email" name="email">
+                          </div>
+                    </div>
+                   
+                   <div class="row p-2">
+                    <div class="input-container col-12 " style="display: inline-flex;">
+                        <i class="fa fa-key icon"></i>
+                        <input class="input-field" type="password" placeholder="Password" name="password">
+                    </div>
+                    
+                   </div>
+                  {% csrf_token %}
+                   <div class="col-8 m-auto">
+                        <button class="btn btn-block btn-primary" type="submit">
+                            Login
+                        </button>
+                   </div>
+                </form>
+                <div class="social-auth-links text-center mb-3">
+                <p>- OR -</p>
+                <hr>
+                <a href="#" class="btn btn-block btn-primary">
+                    <i class="fa fa-facebook mr-2"></i> Sign in using Facebook
+                </a>
+                <a href="#" class="btn btn-block btn-danger">
+                    <i class="fa fa-google mr-2"></i> Sign in using Google
+                </a>
+                </div>
+
+            </div>
+                  
+            
+        </div>
+ 
+</div>
+{% endblock content %}

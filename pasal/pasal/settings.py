@@ -25,8 +25,7 @@ SECRET_KEY = 'fm^%o_30_*a991&_#f_dzo^7j6i!+#^go^p#@k%c^gqz*(n&)o'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['ecomdp.herokuapp.com', 'localhost']
-
+ALLOWED_HOSTS = ['ecomdp.herokuapp.com']
 
 # Application definition
 
@@ -39,6 +38,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'shop.apps.ShopConfig',
     'owner.apps.OwnerConfig',
+    'staff.apps.StaffConfig',
+    'taggit',
 ]
 
 MIDDLEWARE = [
@@ -124,6 +125,8 @@ STATIC_URL = '/static/'
 #     os.path.join(BASE_DIR, 'static'),
 # )
 
+MEDIA_URL = '/media/'
+MEDIA_ROOT =  os.path.join(BASE_DIR, 'media')
 AUTH_USER_MODEL = 'shop.CustomUser'
 
 
@@ -134,3 +137,11 @@ STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 import dj_database_url
 prod_db = dj_database_url.config(conn_max_age=500)
 DATABASES['default'].update(prod_db)
+
+
+# EMAIL_HOST=os.environ.get('EMAIL_HOST')
+# EMAIL_HOST_USER=os.environ.get('EMAIL_HOST_USER')
+# EMAIL_HOST_PASSWORD=os.environ.get('EMAIL_HOST_PASSWORD')
+# EMAIL_USE_TLS=os.environ.get('EMAIL_USE_TLS')
+# EMAIL_PORT=os.environ.get('EMAIL_PORT')
+

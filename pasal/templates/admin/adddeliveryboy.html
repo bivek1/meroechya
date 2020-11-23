@@ -1,0 +1,147 @@
+{% extends "base.html" %}
+
+
+{% block title %}
+    Add Delivery Boy
+{% endblock title %}
+
+{% block content %}
+  
+<div class="container-fluid">
+    <div class="text-center">
+        <h5>
+            Add Delivery Boy for your E-commerce
+        </h5>
+        <small>
+            You can add and manage Delivery boy profile and reports 
+        </small>
+    </div>
+    <form action="" method="post">
+        <div class="row">
+            <div class="col-md-8 col-12 m-auto">
+                <div class="form-row p-2" style="background-color: white;">
+                    <div class="form-group col-md-6 col-6">
+                        {{form.fullname.label_tag}}
+                        {{form.fullname}}
+                        {{form.fullname.errors}}
+                    </div>
+                    <div class="form-group col-md-6 col-6">
+                        {{form.email.label_tag}}
+                        {{form.email}}
+                        {{form.email.errors}}
+                    </div>
+                    <div class="form-group col-md-6 col-6">
+                        {{form.password.label_tag}}
+                        {{form.password}}
+                        {{form.password.errors}}
+                    </div>
+                    <div class="form-group col-md-6 col-6">
+                        {{form.re_password.label_tag}}
+                        {{form.re_password}}
+                        {{form.re_password.errors}}
+                    </div>
+                    <div class="form-group col-md-6 col-6">
+                        {{form.country.label_tag}}
+                        {{form.country}}
+                        {{form.country.errors}}
+                    </div>
+                    <div class="form-group col-md-3 col-6">
+                        {{form.district.label_tag}}
+                        {{form.district}}
+                        {{form.district.errors}}
+                    </div>
+                    <div class="form-group col-md-3 col-6">
+                        {{form.province.label_tag}}
+                        {{form.province}}
+                        {{form.province.errors}}
+                    </div>
+                    <div class="form-group col-md-3 col-6">
+                        {{form.ward_no.label_tag}}
+                        {{form.ward_no}}
+                        {{form.ward_no.errors}}
+                    </div>
+                    <div class="form-group col-md-3 col-6">
+                        {{form.street.label_tag}}
+                        {{form.street}}
+                        {{form.street.errors}}
+                    </div>
+                   
+                    <div class="form-group col-md-6 col-6">
+                        {{form.number.label_tag}}
+                        {{form.number}}
+                        {{form.number.errors}}
+                    </div>
+                    <div class="form-group col-md-3 col-6">
+                        {{form.gender.label_tag}}
+                        {{form.gender}}
+                        {{form.gender.errors}}
+                    </div>
+                    
+                    <div class="form-group col-md-3 col-6">
+                        {{form.DOB.label_tag}}
+                        {{form.DOB}}
+                        {{form.DOB.errors}}
+                    </div>
+                    <div class="form-group col-md-3 col-6">
+                        {{form.permanent_country.label_tag}}
+                        {{form.permanent_country}}
+                        {{form.permanent_country.errors}}
+                    </div>
+                    <div class="form-group col-md-3 col-6">
+                        {{form.permanent_district.label_tag}}
+                        {{form.permanent_district}}
+                        {{form.permanent_district.errors}}
+                    </div>
+                    <div class="form-group col-md-3 col-6">
+                        {{form.permanent_muncipalicity.label_tag}}
+                        {{form.permanent_muncipalicity}}
+                        {{form.permanent_muncipalicity.errors}}
+                    </div>
+                    <div class="form-group col-md-3 col-6">
+                        {{form.permanent_ward.label_tag}}
+                        {{form.permanent_ward}}
+                        {{form.permanent_ward.errors}}
+                    </div>
+                    <div class="form-group col-md-3 col-6">
+                        {{form.permanent_address.label_tag}}
+                        {{form.permanent_address}}
+                        {{form.permanent_address.errors}}
+                    </div>
+                    <div class="form-group col-md-3 col-6">
+                        {{form.permanent_tole.label_tag}}
+                        {{form.permanent_tole}}
+                        {{form.permanent_tole.errors}}
+                    </div>
+                    <div class="form-group col-md-6 col-6">
+                        {{form.vechile_no.label_tag}}
+                        {{form.vechile_no}}
+                        {{form.vechile_no.errors}}
+                    </div>
+                    <div class="form-group col-md-3 col-6">
+                        {{form.vechile_color.label_tag}}
+                        {{form.vechile_color}}
+                        {{form.vechile_color.errors}}
+                    </div>
+                    <div class="form-group col-md-3 col-6">
+                        {{form.vechile_name.label_tag}}
+                        {{form.vechile_name}}
+                        {{form.vechile_name.errors}}
+                    </div>
+                    <div class="form-group col-md-12 col-6">
+                        {{form.license_no.label_tag}}
+                        {{form.license_no}}
+                        {{form.license_no.errors}}
+                    </div>
+
+                    {% csrf_token %}
+                    <button class="btn btn-primary col-6 m-auto" type="submit">
+                        Add Delivery Boy
+                    </button>
+                </div>
+
+            </div>
+        </div>
+    </form>
+</div>
+
+{% endblock content %}

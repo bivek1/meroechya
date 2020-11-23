@@ -20,37 +20,35 @@ class Owner(models.Model):
     updated_at = models.DateTimeField(auto_now_add=True)
     objects = models.Manager()
     def __str__(self):
-        return self.admin.first_name
+        return self.admin.email
 
 class Customer(models.Model):
     id = models.AutoField(primary_key = True)
     admin = models.OneToOneField(CustomUser, on_delete=models.CASCADE)
     fullname = models.CharField(max_length = 300)
-    country = models.CharField(max_length = 60, default = 'Nepal')  
+    country = models.CharField(max_length = 60, default = 'Nepal', null = True)  
     number = models.BigIntegerField(null = True)
-    district = models.CharField(max_length = 100,  default = 'Kathmandu')
+    district = models.CharField(max_length = 100,  default = 'Kathmandu', null = True)
     province = models.CharField(max_length = 200, null = True)
-    ward_no = models.IntegerField()
-    street = models.CharField(max_length = 200)
-    profile_pic = models.ImageField(upload_to = "Vendor_Profile", blank = True)
+    ward_no = models.IntegerField(null = True)
+    street = models.CharField(max_length = 200, null = True)
+    profile_pic = models.ImageField(upload_to = "Vendor_Profile", blank = True, null = True)
     gender = models.CharField(max_length = 100, choices = (
         ('Male', 'Male'),
         ('Female', 'Female')
     ), default = 'Male')
-    KYC = models.ImageField(upload_to = 'KYC', blank = True)
+    KYC = models.ImageField(upload_to = 'KYC', blank = True, null = True)
     verified = models.BooleanField(default=False)
     citizen_number = models.BigIntegerField(null = True)
     DOB = models.DateField(null = True)
     created_at = models.DateTimeField(auto_now_add= True)
     updated_at = models.DateTimeField(auto_now_add=True)
-    verified = models.BooleanField(default=False)
     permanent_district = models.CharField(max_length = 200, null = True)
     permanent_muncipalicity = models.CharField(max_length = 200, null = True)
     permanent_address = models.CharField(max_length = 200, null = True)
     permanent_ward = models.CharField(max_length = 200, null = True)
     objects = models.Manager()
-    
-    
+ 
     def __str__(self):
         return self.fullname
 class Wholeseller(models.Model):
@@ -75,7 +73,6 @@ class Wholeseller(models.Model):
     
     def __str__(self):
         return self.fullname
-
 
 class Vendor(models.Model):
     id = models.AutoField(primary_key = True)
@@ -132,7 +129,7 @@ class Affiliate(models.Model):
     objects = models.Manager()
     
     def __str__(self):
-        return self.admin.first_name
+        return self.fullname
 
 class Delivery(models.Model):
     id = models.AutoField(primary_key = True)
@@ -165,11 +162,11 @@ class Delivery(models.Model):
     objects = models.Manager()
     
     def __str__(self):
-        return self.admin.first_name
+        return self.fullname
 
 
 class Delivery_address(models.Model):
-    master = models.ForeignKey(Customer, related_name='deliveryaddress', on_delete=models.CASCADE)
+    master = models.ForeignKey(Customer, related_name='deliveryaddress', on_delete=models.PROTECT)
     fullname = models.CharField(max_length = 200)
     number = models.BigIntegerField(null = True)
     region = models.CharField(max_length = 30)
@@ -179,8 +176,8 @@ class Delivery_address(models.Model):
     objects = models.Manager()
 
 class BankDetails(models.Model):
-    ven = models.ForeignKey(Vendor, related_name='vendor_bank', on_delete=models.CASCADE, null = True, blank = True)
-    use = models.ForeignKey(Affiliate, related_name='aff_bank', on_delete=models.CASCADE, null = True, blank = True) 
+    ven = models.ForeignKey(Vendor, related_name='vendor_bank', on_delete=models.PROTECT, null = True, blank = True)
+    use = models.ForeignKey(Affiliate, related_name='aff_bank', on_delete=models.PROTECT, null = True, blank = True) 
     acc_no = models.CharField(max_length = 300)
     acc_name = models.CharField(max_length = 300)
     bank_name = models.CharField(max_length = 300)

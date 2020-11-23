@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+
+{% block title %}
+  Your Vendor List
+{% endblock title %}
+
+
+{% block content %}
+    <div class="container">
+        <h3 class="text-center">
+            Verify Request List
+        </h3>
+        <div class="card">
+            <table class="table table-borderless table-shopping-cart">
+            <thead class="text-muted">
+            <tr class="small text-uppercase">
+              <th scope="col">Email</th>
+              <th scope="col" width="180">Request</th>
+              <th scope="col" width="150">User Tye</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for item in vc  %}
+            <tr>
+                <td>
+                {{item.requester.email}}
+                </td>
+                <td> 
+                  <b>Request for Verify</b>
+                </td>
+                <td> 
+                   {{item.requester.get_user_type_display}}
+                </td>
+                    <td class="text-right"> 
+                        <a href="{%url 'owner:vendorreport' id=item.requester.vendor.id%}" class="btn btn-dark"> View Details</a>
+                </td>
+            </tr>
+            {% endfor %}
+            </tbody>
+            </table>
+
+            </div>
+    </div>
+
+{% endblock content %}

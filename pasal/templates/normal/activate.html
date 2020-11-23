@@ -1,0 +1,10 @@
+{% autoescape off %}
+
+Hi {{user.email}}
+
+Please Click this Link below to verify your email.
+
+http://{{domail}}{%url 'shop:activate' uidb64=uid token=token %}
+
+
+{% endautoescape %}

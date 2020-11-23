@@ -9,14 +9,216 @@
 <div class="container-fluid">
   <br>
   <div class="text-center">
+    <p>
+    {% if man.vendor.verified %}
+      Hello {{man.vendor.fullname}} 
+      <i class="fa fa-check-circle p-1" style="color: rgb(34, 100, 221);" >
+
+      </i>
+      {%else%}
+      Hello {{man.vendor.fullname}} 
+      <i class="fa fa-times-circle p-1" style=" color: red;" >
+
+      </i>
+      {% if man.vendor.KYC and man.vendor.vat %}
+      
+      {% else %}
+      <a href="{%url 'staff:vendorkyc'%}" style="color: red;">
+        You need to verify your KYC in order to use some important features. <u>Verify Now?</u>
+      </a>
+      {% endif %}
+     
+    {% endif %}
+
+      
+      {% if messages %}
+        {%for message in messages%}
+        <div class="alert alert-warning alert-dismissible fade show" role="alert">
+           {{message}}
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        {%endfor%}
+      {% endif %}
+        
+      
+    </p>
     <h5>Welcome to Your Dashboard</h5>
     <small>
       Manage your Products, orders and manymore
     </small>
+    
+    {% if man.vendor.verified %}
+    <div class="row p-2">
+
+      <div class="col-4 col-md-4 p-2 addall">
+          <a href="{%url 'staff:add_category'%}"> 
+          <div class="text-center p-3 bg-white" >
+            <i class="fa fa-briefcase p-2" style="background-color:green; color: white; border-radius: 5px; font-size: 30px;">
+              
+            </i>
+            <h5 class="mt-2">
+              Add Category
+            </h5>
+          </div>
+          </a>
+        </div>  
+        <div class="col-4 col-md-4 p-2 addall">
+          <a href="{%url 'staff:add_sub_cat'%}"> 
+          <div class="text-center p-3 bg-white" >
+            <i class="fa fa-table p-2" style="background-color: red; color: white; border-radius: 5px; font-size: 30px;">
+              
+            </i>
+            <h5 class="mt-2">
+              Add Sub Category
+            </h5>
+          </div>
+          </a>
+        </div>  
+        <div class="col-4 col-md-4 p-2 addall">
+          <a href="{%url 'owner:addvendor'%}"> 
+          <div class="text-center p-3 bg-white" >
+            <i class="fa fa-paragraph p-2" style="background-color: yellowgreen; color: white; border-radius: 5px; font-size: 30px;">
+              
+            </i>
+            <h5 class="mt-2">
+              Add Products
+            </h5>
+          </div>
+          </a>
+        </div>  
+    </div>
+    <hr>
+    <h4 class="text-center">Manage Services for your products</h4>
+    <div class="row text-center">
+        
+    <div class="col-12 col-md-4 col-sm-4 p-2 text-center">
+      <a href="{%url 'owner:vendorlist'%}">
+          <button class="btn btn-danger btn-lg w-100" style="height: 75px;">
+              <i class="fa fa-rupee-sign">
+                  Manage Commision
+              </i>
+          </button>
+      </a>
+    </div>
+    <div class="col-12 col-md-4 col-sm-4 p-2 text-center">
+      <a href="{%url 'owner:vendorlist'%}">
+          <button class="btn btn-primary btn-lg w-100" style="height: 75px;">
+              <i class="fa fa-donate">
+                  Manage Discount
+              </i>
+          </button>
+      </a>
+    </div>
+    <div class="col-12 col-md-4 col-sm-4 p-2 text-center">
+      <a href="{%url 'owner:vendorlist'%}">
+          <button class="btn btn-warning btn-lg w-100" style="height: 75px;">
+              <i class="fa fa-file-invoice">
+                  Manage Coupons
+              </i>
+          </button>
+      </a>
+    </div>
+    </div>
+    {%else%}
+    <div class="row p-2">
+      <div class="col-4 col-md-4 p-2 addall">
+       
+          <div class="text-center p-3 bg-white" data-toggle="modal" data-target="#exampleModal2">
+            <i class="fa fa-briefcase p-2" style="background-color:green; color: white; border-radius: 5px; font-size: 30px;">
+              
+            </i>
+            <h5 class="mt-2">
+              Add Category
+            </h5>
+          </div>
+      
+        </div>  
+        <div class="col-4 col-md-4 p-2 addall">
+         
+          <div class="text-center p-3 bg-white" data-toggle="modal" data-target="#exampleModal2" >
+            <i class="fa fa-table p-2" style="background-color: red; color: white; border-radius: 5px; font-size: 30px;">
+              
+            </i>
+            <h5 class="mt-2">
+              Add Sub Category
+            </h5>
+          </div>
+
+        </div>  
+        <div class="col-4 col-md-4 p-2 addall">
+         
+          <div class="text-center p-3 bg-white" data-toggle="modal" data-target="#exampleModal2" >
+            <i class="fa fa-paragraph p-2" style="background-color: yellowgreen; color: white; border-radius: 5px; font-size: 30px;">
+              
+            </i>
+            <h5 class="mt-2">
+              Add Products
+            </h5>
+          </div>
+   
+        </div>  
+    </div>
+    <hr>
+    <h4 class="text-center">Manage Services for your products</h4>
+    <div class="row text-center">
+        
+    <div class="col-12 col-md-4 col-sm-4 p-2 text-center">
+      
+          <button class="btn btn-danger btn-lg w-100" data-toggle="modal" data-target="#exampleModal2" style="height: 75px;">
+              <i class="fa fa-rupee-sign">
+                  Manage Commision
+              </i>
+          </button>
+  
+    </div>
+    <div class="col-12 col-md-4 col-sm-4 p-2 text-center">
+      
+          <button class="btn btn-primary btn-lg w-100" data-toggle="modal" data-target="#exampleModal2" style="height: 75px;">
+              <i class="fa fa-donate">
+                  Manage Discount
+              </i>
+          </button>
+
+    </div>
+    <div class="col-12 col-md-4 col-sm-4 p-2 text-center">
+     
+          <button class="btn btn-warning btn-lg w-100" data-toggle="modal" data-target="#exampleModal2" style="height: 75px;">
+              <i class="fa fa-file-invoice">
+                  Manage Coupons
+              </i>
+          </button>
+    </div>
+    </div>
+
+    <!-- Model for unverified vendor -->
+    <div class="modal fade" id="exampleModal2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Please Verify KYC</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            You are not verified yet to perform different action in this shop
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    {% endif %}
+      
+
   </div>
   <br>
-  <H1 class="text-center">
-      VENDOR DASHBOARD
-  </H1>
+  
+  
+    
+  
 </div>
 {% endblock content %}

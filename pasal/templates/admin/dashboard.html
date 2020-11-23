@@ -10,112 +10,79 @@
   <div class="text-center">
     <h5>Welcome to Admin Dashboard</h5>
     <small>
-      Add Vendor, delivery boy, manage staff, manage other settings
+      Manage your order, report and manymore
     </small>
   </div>
-  <br>
+  <div class="row" >
+    <div class="col-12">
+      <div class= 'float-right'>
+        <a href="{%url 'owner:kycrequest'%}">
+        <button type="button" class="btn btn-success">
+          Verify Request <span class="badge badge-light">{{vc}}</span>
+        </button>
+        </a>
+        <button type="button" class="btn btn-danger">
+          Comments <span class="badge badge-light">0</span>
+        </button>
+        <button type="button" class="btn btn-warning">
+          Extra <span class="badge badge-light">0</span>
+        </button>
+      </div>
+    </div>
+  </div>
+  <hr>
+  <div  class="text-center">
+    <p>
+      <b>
+        Your Recent Order 
+      </b>
+    </p>
+  </div>
+
+  <hr>
+  <div  class="text-center">
+    <p>
+      <b>
+       Manage Shop 
+      </b>
+    </p>
+  </div>
   <div class="row p-2">
     
-      <div class="col-6 col-md-3  addall">
-        <a href="{%url 'owner:addvendor'%}"> 
+      <div class="col-12 col-md-6 p-2 addall">
+        <a href="{%url 'staff:addmanage'%}"> 
         <div class="text-center p-3 bg-white" >
-          <i class="fa fa-industry p-2" style="background-color: #007bff; color: white; border-radius: 5px; font-size: 30px;">
-            
+          <i class="fa fa-tasks p-2" style="background-color: #007bff; color: white; border-radius: 5px; font-size: 30px;">
           </i>
           <h4 class="mt-2">
-            Add Vendor
+            Add or Manage  User and Services
           </h4>
           <p>
-            Add Vendor to your Online shop
+            Add or manage your entire services
           </p>
         </div>
         </a>
       </div>
 
     
-    <div class="col-6 col-md-3 addall">
-      <div class="text-center p-3 bg-white" >
-        <i class="fa fa-users p-2" style="background-color: #ff006a; color: white; border-radius: 5px; font-size: 30px;">
-          
-        </i>
-        <h4 class="mt-2">
-          Add WholeSeller
-        </h4>
-        <p>
-          Add WholeSeller to your Online shop
-        </p>
-      </div>
-  
-    </div>
-    <div class="col-6 col-md-3 addall">
-      <div class="text-center p-3 bg-white" >
-        <i class="fa fa-motorcycle p-2" style="background-color: #24d441; color: white; border-radius: 5px; font-size: 30px;">
-          
-        </i>
-        <h4 class="mt-2">
-          Add Delivery Boy
-        </h4>
-        <p>
-          Add Delivery Boy to your Online shop
-        </p>
-      </div>
-    
-    </div>
-    <div class="col-6 col-md-3 addall">
-      <div class="text-center p-3 bg-white" >
-        <i class="fa fa-link p-2" style="background-color: #7700ff; color: white; border-radius: 5px; font-size: 30px;">
-          
-        </i>
-        <h4 class="mt-2">
-          Add Affiliate
-        </h4>
-        <p>
-          Add Affiliate to your Online shop
-        </p>
-      </div>
-    
-    </div>
-  </div>
-  <hr>
-  <h4 class="text-center">Manage User in your shop</h4>
-  <div class="row text-center">
-      
-      <div class="col-6 col-md-3 col-sm-3 p-2 text-center">
-        <a href="{%url 'owner:vendorlist'%}">
-            <button class="btn btn-primary btn-lg w-100" style="height: 75px;">
-                <i class="fa fa-industry">
-                    Manage vendor
-                </i>
-            </button>
-        </a>
-    </div>
-    <div class="col-6 col-md-3 col-sm-3 p-2 text-center">
-      <a href="{%url 'owner:vendorlist'%}">
-          <button class="btn btn-success btn-lg w-100" style="height: 75px;">
-              <i class="fa fa-users">
-                 Manage WholeSeller
-              </i>
-          </button>
+    <div class="col-12 col-md-6 p-2 addall">
+      <a href="{%url 'owner:addwholeseller'%}">
+        <div class="text-center p-3 bg-white" >
+          <i class="fa fa-print p-2" style="background-color: #ff006a; color: white; border-radius: 5px; font-size: 30px;">
+            
+          </i>
+          <h4 class="mt-2">
+           Manage Report and Order
+          </h4>
+          <p>
+            Manage your entire report and order
+          </p>
+        </div>
       </a>
+    </div>
+
   </div>
-    <div class="col-6 col-md-3 col-sm-3 p-2 text-center">
-      <a href="{%url 'owner:vendorlist'%}">
-          <button class="btn btn-danger btn-lg w-100" style="height: 75px;">
-              <i class="fa fa-motorcycle">
-                  Mange Delivery boy
-              </i>
-          </button>
-      </a>
-  </div>
-  <div class="col-6 col-md-3 col-sm-3 p-2 text-center">
-    <a href="{%url 'owner:vendorlist'%}">
-        <button class="btn btn-secondary btn-lg w-100" style="height: 75px;">
-            <i class="fa fa-link">
-                Manage Affiliate
-            </i>
-        </button>
-    </a>
-  </div>
-  </div>
+ 
+
 </div>
 {% endblock content %}

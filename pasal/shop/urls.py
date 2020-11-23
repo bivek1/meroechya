@@ -10,4 +10,7 @@ urlpatterns = [
     path('logout',views.logout_user, name = "logout" ),
     path('joinasvendor', views.enrollvendor, name = 'enrollvendor'),
     path('joinaswholeseller', views.enrollwholeseller, name = 'enrollseller'),
+    path('joinasaffiliate', views.enrollaffiliate, name = 'enrollaffiliate'),
+    path('signup', views.registerA, name = 'register'),
+    path('login', views.loginpage, name= 'login'),
 ]
