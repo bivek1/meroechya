@@ -9,7 +9,6 @@ from owner.models import verifyrequest
 # Create your views here.
 def userdashboard(request):
     current = CustomUser.objects.get(id = request.user.id)
-    
     dist = {
         'man': current,
     }
@@ -17,7 +16,6 @@ def userdashboard(request):
 
 def vendordashboard(request):
     current = CustomUser.objects.get(id = request.user.id)
-        
     dist = {
         'man': current,
     }
@@ -25,8 +23,7 @@ def vendordashboard(request):
     
 def deliverdashboard(request):
     current = CustomUser.objects.get(id = request.user.id)
-    
-        
+      
     dist = {
         'man': current,
     }
@@ -119,19 +116,36 @@ def vendorkyc(request):
         vat = request.POST['vat']
         kyc = request.FILES['kyc']
         tax_pic = request.FILES['tax']
+        try:
+            aa = user_obj.vendor
+            print(aa)
+            aa.number = number
+            aa.vat = vat
+            aa.KYC = kyc
+            aa.taxpic = tax_pic
+            aa.save()
+            requester = verifyrequest()
+            requester.requester = request.user
+            requester.save()
+            messages.success(request, 'Your KYC details has been sent')
+            return HttpResponseRedirect(reverse('staff:vendordashboard'))
+        except:
+           pass
         
-        aa = user_obj.vendor
-        print(aa)
-        aa.number = number
-        aa.vat = vat
-        aa.KYC = kyc
-        aa.taxpic = tax_pic
-        aa.save()
-        
-        requester = verifyrequest()
-        requester.requester = request.user
-        requester.save()
-        messages.success(request, 'Your KYC details has been sent')
-        return HttpResponseRedirect(reverse('staff:vendordashboard'))
+        try:
+            aa = user_obj.wholeseller
+            print(aa)
+            aa.number = number
+            aa.vat = vat
+            aa.KYC = kyc
+            aa.taxpic = tax_pic
+            aa.save()
+            requester = verifyrequest()
+            requester.requester = request.user
+            requester.save()
+            messages.success(request, 'Your KYC details has been sent')
+            return HttpResponseRedirect(reverse('staff:wholesellerdashboard'))
+        except:
+            pass
     else:
-        return render(request, 'vendor/kyc.html')
+        return render(request, 'staff/kyc.html')

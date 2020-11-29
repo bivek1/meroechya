@@ -14,7 +14,9 @@ urlpatterns = [
     path('affiliatelist', views.affiliatelist, name = 'affiliatelist'),
     path('userlist', views.userlist, name = 'userlist'),
     path('vendor_report/id=<int:id>', views.vendorreport, name = 'vendorreport'),
+    path('wholesellerreport/id=<int:id>', views.wholesellerReport, name = 'wholesellerReport'),
     path('kycrequest', views.kycrequest, name = 'kycrequest'),
-    path('verify/<int:id>', views.verify, name='verify'),
+    path('verifyvendor/<int:id>', views.verifyVendor, name='verifyVendor'),
+    path('verifywholeseller/<int:id>', views.verifySeller, name='verifySeller'),
     
 ]

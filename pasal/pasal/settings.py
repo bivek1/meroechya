@@ -25,7 +25,7 @@ SECRET_KEY = 'fm^%o_30_*a991&_#f_dzo^7j6i!+#^go^p#@k%c^gqz*(n&)o'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['ecomdp.herokuapp.com']
+ALLOWED_HOSTS = ['ecomdp.herokuapp.com' , 'localhost']
 
 # Application definition
 
@@ -121,9 +121,9 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
 STATIC_URL = '/static/'
-# STATICFILES_DIRS = (
-#     os.path.join(BASE_DIR, 'static'),
-# )
+STATICFILES_DIRS = (
+    os.path.join(BASE_DIR, 'static'),
+)
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT =  os.path.join(BASE_DIR, 'media')
@@ -131,12 +131,12 @@ AUTH_USER_MODEL = 'shop.CustomUser'
 
 
 AUTHENTICATION_BACKENDS = ['shop.EmailBackend.EmailBackEnd']
-STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+# STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
-STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
-import dj_database_url
-prod_db = dj_database_url.config(conn_max_age=500)
-DATABASES['default'].update(prod_db)
+# STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+# import dj_database_url
+# prod_db = dj_database_url.config(conn_max_age=500)
+# DATABASES['default'].update(prod_db)
 
 
 # EMAIL_HOST=os.environ.get('EMAIL_HOST')

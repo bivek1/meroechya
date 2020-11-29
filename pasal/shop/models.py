@@ -53,7 +53,7 @@ class Customer(models.Model):
         return self.fullname
 class Wholeseller(models.Model):
     id = models.AutoField(primary_key = True)
-    admin = models.OneToOneField(CustomUser, on_delete=models.CASCADE)
+    admin = models.OneToOneField(CustomUser, on_delete=models.CASCADE, related_name = 'wholeseller')
     fullname = models.CharField(max_length = 300)
     country = models.CharField(max_length = 60, default = 'Nepal')  
     number = models.BigIntegerField(null = True)
@@ -73,6 +73,10 @@ class Wholeseller(models.Model):
     
     def __str__(self):
         return self.fullname
+    
+    def get_absolute_url(self):
+        return reverse("owner:wholesellerReport", args=[self.id])
+    
 
 class Vendor(models.Model):
     id = models.AutoField(primary_key = True)

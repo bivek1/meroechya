@@ -75,6 +75,9 @@ def vendorreport(request , id):
     selected = get_object_or_404(Vendor, id = id)
     return render(request, 'admin/vendorreport.html', {'one': selected, 'id':id})
     
+def wholesellerReport(request, id):
+    selected = get_object_or_404(Wholeseller, id = id)
+    return render(request, 'admin/wholesellerreport.html', {'one': selected, 'id':id})
 def adddeliveryboy(request):
     
     form = DeliveryBoyForm(request.POST or None)
@@ -168,17 +171,30 @@ def kycrequest(request):
     }
     return render(request, 'admin/verifyrequest.html', dist)
 
-def verify(request, id):
-    # try:
-    verifyuser = Vendor.objects.get(id= id)
-    verifyuser.verified = True
-    verifyuser.save()
-    verifyA = verifyrequest.objects.filter(requester = verifyuser.admin.id)
-    verifyA.delete()
-    messages.success(request, 'Successfully Verified')
-    return HttpResponseRedirect(reverse('owner:vendorreport', kwargs={'id':id}))
-    # except:
-    #     messages.success(request, 'Something went wrong')
-    #     return HttpResponseRedirect(reverse('owner:vendorreport', kwargs={'id':id}))
+def verifyVendor(request, id):
+    try:
+        verifyuser = Vendor.objects.get(id= id)
+        verifyuser.verified = True
+        verifyuser.save()
+        verifyA = verifyrequest.objects.filter(requester = verifyuser.admin.id)
+        verifyA.delete()
+        messages.success(request, 'Successfully Verified')
+        return HttpResponseRedirect(reverse('owner:vendorreport', kwargs={'id':id}))
+    except:
+        messages.success(request, 'Something went wrong!')
+        return HttpResponseRedirect(reverse('owner:vendorreport', kwargs={'id':id}))       
+   
+def verifySeller(request, id):
+    try:
+        verifyuser = Wholeseller.objects.get(id= id)
+        verifyuser.verified = True
+        verifyuser.save()
+        verifyA = verifyrequest.objects.filter(requester = verifyuser.admin.id)
+        verifyA.delete()
+        messages.success(request, 'Successfully Verified')
+        return HttpResponseRedirect(reverse('owner:wholesellerReport', kwargs={'id':id}))
+    except:
+        messages.success(request, 'Something went wrong!')
+        return HttpResponseRedirect(reverse('owner:wholesellerReport', kwargs={'id':id}))
     
    

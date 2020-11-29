@@ -181,23 +181,20 @@ def enrollaffiliate(request):
 
 def registerA(request):
     form = CustomerForm(request.POST or None)
-    
     if form.is_valid():
         foms = CustomerForm(request.POST)
         cd = form.cleaned_data
         fullname = cd['fullname']
         email = cd['email']
         password = cd['password']
-        
         fom = foms.save(commit=False)
         vend = CustomUser.objects.create_user(email = email, password = password, username = email, user_type = '6')
         fom.admin = vend
         fom.fullname = fullname
         fom.save()   
-        
-        
         messages.success(request, 'User Created Sucessfully. Please Login')
         return HttpResponseRedirect(reverse('shop:login'))
+    
     else:
         return render(request, 'normal/enrolluser.html', {'form': form})
     return render(request, 'normal/enrolluser.html', {'form': form})

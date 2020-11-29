@@ -45,10 +45,11 @@
             <div class="col-md-2">
                 
                 {% if one.verified %}
-                <input class="profile-edit-btn btn-primary text-center"  value="Verified" style="color: white;"/>
+                <input class="profile-edit-btn btn-primary text-center" name="btnAddMore" value="Verified" style="color: white;"/>
                 {%else%}
-                <a href="{%url 'owner:verifyVendor' one.id%}">
-                    <div class="profile-edit-btn btn-danger text-center" value="Verify?" style="color: white;"> Verify? </div>
+                <a href="{%url 'owner:verifySeller' one.id%}">
+                    <div class="profile-edit-btn btn-danger text-center" value="Verify?" style="color: white;">Verify?</div>
+
                 </a>
                 
                 {% endif %}
@@ -76,7 +77,7 @@
                 {% if one.verified %}
                     {%else%}
                     <div class="alert alert-danger">
-                        Vendor is not verified
+                        Wholeseller is not verified
                     </div>
                 {% endif %}
                     
